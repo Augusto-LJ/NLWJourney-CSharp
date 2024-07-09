@@ -1,4 +1,5 @@
-﻿using Journey.Application.UseCases.Trips.Register;
+﻿using Journey.Application.UseCases.GetAll;
+using Journey.Application.UseCases.Trips.Register;
 using Journey.Communication.Requests;
 using Journey.Exception;
 using Journey.Exception.ExceptionsBase;
@@ -29,6 +30,16 @@ namespace Journey.Api.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ResourceErrorMessages.UNKNOWN_ERROR);
             }
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var useCase = new GetAllTripsUseCase();
+
+            var result = useCase.Execute();
+
+            return Ok(result);
         }
     }
 }
