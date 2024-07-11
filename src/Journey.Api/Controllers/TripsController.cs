@@ -50,13 +50,25 @@ namespace Journey.Api.Controllers
         [HttpGet]
         [Route("{id}")]
         [ProducesResponseType(typeof(ResponseTripJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         public IActionResult GetById([FromRoute] Guid id)
         {
-            var useCase = new GetTripByIdUseCase();
+            try
+            {
+                var useCase = new GetTripByIdUseCase();
 
-            var response = useCase.Execute(id);
+                var response = useCase.Execute(id);
 
-            return Ok(response);
+                return Ok(response);
+            }
+            catch (JouneyException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ResourceErrorMessages.UNKNOWN_ERROR);
+            }
         }
     }
 }
