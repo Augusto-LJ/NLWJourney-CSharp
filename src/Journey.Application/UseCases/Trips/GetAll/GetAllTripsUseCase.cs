@@ -1,7 +1,7 @@
 ﻿using Journey.Communication.Responses;
 using Journey.Infrastructure;
 
-namespace Journey.Application.UseCases.GetAll
+namespace Journey.Application.UseCases.Trips.GetAll
 {
     public class GetAllTripsUseCase
     {
