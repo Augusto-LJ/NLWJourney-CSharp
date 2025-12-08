@@ -1,4 +1,4 @@
-# NLWJourney-CSharp
+# TripController
 
 A C# backend application developed during the NLW (Next Level Week) Journey, focusing on building robust APIs with proper validation and testing mechanisms.
 
